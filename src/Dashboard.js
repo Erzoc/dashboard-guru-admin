@@ -7,6 +7,8 @@ import SchoolIcon from '@mui/icons-material/School';
 import PeopleIcon from '@mui/icons-material/People';
 import GroupsIcon from '@mui/icons-material/Groups';
 import AttachMoneyIcon from '@mui/icons-material/AttachMoney';
+import { DashboardSkeleton } from './LoadingState';
+
 
 // Stats Card Component
 const StatsCard = ({ title, value, subtitle, icon: Icon, color }) => (
@@ -95,12 +97,9 @@ export const Dashboard = () => {
   ];
 
   if (loading) {
-    return (
-      <Box display="flex" justifyContent="center" alignItems="center" height="80vh">
-        <Typography variant="h5">Loading dashboard...</Typography>
-      </Box>
-    );
-  }
+  return <DashboardSkeleton />;
+}
+
 
   return (
     <Box p={3}>

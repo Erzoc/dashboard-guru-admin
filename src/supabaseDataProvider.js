@@ -7,30 +7,46 @@ const supabase = createClient(supabaseUrl, supabaseKey);
 
 export const supabaseDataProvider = {
   getList: async (resource, params) => {
-    const { page, perPage } = params.pagination;
-    const { field, order } = params.sort;
-    
-    const start = (page - 1) * perPage;
-    const end = start + perPage - 1;
+  const { page, perPage } = params.pagination;
+  const { field, order } = params.sort;
+  const filters = params.filter;
+  
+  const start = (page - 1) * perPage;
+  const end = start + perPage - 1;
 
-    let query = supabase
-      .from(resource)
-      .select('*', { count: 'exact' })
-      .range(start, end);
+  let query = supabase
+    .from(resource)
+    .select('*', { count: 'exact' })
+    .range(start, end);
 
-    if (field) {
-      query = query.order(field, { ascending: order === 'ASC' });
+  // Apply sorting
+  if (field) {
+    query = query.order(field, { ascending: order === 'ASC' });
+  }
+
+  // Apply filters
+  Object.keys(filters).forEach(key => {
+    if (filters[key] !== undefined && filters[key] !== '') {
+      // Support for ilike (case-insensitive search)
+      if (key.includes('@ilike')) {
+        const actualKey = key.replace('@ilike', '');
+        query = query.ilike(actualKey, `%${filters[key]}%`);
+      } else {
+        query = query.eq(key, filters[key]);
+      }
     }
+  });
 
-    const { data, error, count } = await query;
-    
-    if (error) throw error;
+  const { data, error, count } = await query;
+  
+  if (error) throw error;
 
-    return {
-      data: data,
-      total: count,
-    };
-  },
+  return {
+    data: data,
+    total: count,
+  };
+},
+
 
   getOne: async (resource, params) => {
     const { data, error } = await supabase
@@ -122,12 +138,14 @@ export const supabaseDataProvider = {
   },
 
   deleteMany: async (resource, params) => {
-    const { error } = await supabase
-      .from(resource)
-      .delete()
-      .in('id', params.ids);
+  const { error } = await supabase  // ← Hanya ambil 'error'
+    .from(resource)
+    .delete()
+    .in('id', params.ids);
 
-    if (error) throw error;
-    return { data: params.ids };
-  },
+  if (error) throw error;
+  return { data: params.ids };
+},
+
+
 };

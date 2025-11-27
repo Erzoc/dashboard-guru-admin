@@ -15,3 +15,5 @@ caswill78@gmail.com
 DB PASS : L4gonjreng#
 
 https://xtlqmlecilqwqejrkcsp.supabase.co
+ANON
+eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Inh0bHFtbGVjaWxxd3FlanJrY3NwIiwicm9sZSI6ImFub24iLCJpYXQiOjE3NjQyMjk5NzMsImV4cCI6MjA3OTgwNTk3M30.8FMyRxb8h9o5meM01ZQQPVYlI_VyV_zF_1iaf1mV468
