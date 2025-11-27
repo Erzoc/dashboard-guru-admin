@@ -1,0 +1,55 @@
+{
+  "schools": [
+    {
+      "id": 1,
+      "name": "SD Negeri 1 Medan",
+      "email": "sd1@school.id",
+      "subscription_plan": "school",
+      "subscription_status": "active",
+      "total_teachers": 25,
+      "total_students": 500,
+      "mrr": 2000000
+    },
+    {
+      "id": 2,
+      "name": "SMP Swasta 2 Medan",
+      "email": "smp2@school.id",
+      "subscription_plan": "pro",
+      "subscription_status": "active",
+      "total_teachers": 18,
+      "total_students": 350,
+      "mrr": 49000
+    }
+  ],
+  "users": [
+    {
+      "id": 1,
+      "email": "admin@dashboardguru.id",
+      "password": "admin123",
+      "name": "Super Admin",
+      "role": "super_admin",
+      "school_id": null,
+      "status": "active"
+    },
+    {
+      "id": 2,
+      "email": "guru1@school.id",
+      "password": "guru123",
+      "name": "Budi Santoso",
+      "role": "teacher",
+      "school_id": 1,
+      "status": "active"
+    }
+  ],
+  "transactions": [
+    {
+      "id": 1,
+      "school_id": 1,
+      "school_name": "SD Negeri 1 Medan",
+      "amount": 2000000,
+      "status": "paid",
+      "date": "2025-11-20",
+      "invoice_number": "INV-2025-001"
+    }
+  ]
+}
