@@ -1,10 +1,10 @@
 import { Admin, Resource } from 'react-admin';
-import jsonServerProvider from 'ra-data-json-server';
+import { supabaseDataProvider } from './supabaseDataProvider';
 import { theme } from './theme';
 import { CustomLayout } from './Layout';
 import { SchoolList, SchoolCreate, SchoolEdit, SchoolShow } from './schools';
 
-const dataProvider = jsonServerProvider('http://localhost:3001');
+const dataProvider = supabaseDataProvider;
 
 function App() {
   return (
