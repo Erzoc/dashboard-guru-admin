@@ -1,6 +1,7 @@
 import { Admin, Resource } from 'react-admin';
 import { supabaseDataProvider } from './supabaseDataProvider';
 import { theme } from './theme';
+import { Dashboard } from './Dashboard';
 import { CustomLayout } from './Layout';
 import { SchoolList, SchoolCreate, SchoolEdit, SchoolShow } from './schools';
 
@@ -13,6 +14,7 @@ function App() {
       theme={theme} 
       title="Dashboard Guru Indonesia"
       layout={CustomLayout}
+      dashboard={Dashboard}  // ← TAMBAH INI
     >
       <Resource 
         name="schools" 
